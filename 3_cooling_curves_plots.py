@@ -366,6 +366,6 @@ else:
     # plt.savefig("img/filtered_age_vs_mass_finer2.pdf")
     # plt.savefig("img/filtered_age_vs_Zp_finer2.pdf")
     # plt.savefig("img/filtered_cooling_curves_finer_alpha_307_correct.pdf")
-    plt.savefig("img/2_filtered_cooling_curves_without_report.pdf")
+    # plt.savefig("img/2_filtered_cooling_curves_without_report.pdf")
 
 # %%
