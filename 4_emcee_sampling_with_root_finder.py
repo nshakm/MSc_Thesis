@@ -420,61 +420,61 @@ for index in df.index:
             comments='', fmt='%1.4e',)
     print(f"8. Samples saved!\n")
 
-    #plot corner plot
-    print(f"CORNER PLOT\nProcessing planet '{index}) {name}'...")
+#     #plot corner plot
+#     print(f"CORNER PLOT\nProcessing planet '{index}) {name}'...")
 
 
-    #get planet sample data
-    # sample_data = pd.read_csv(f"Output4/samples/planet_{index}_samples.dat", sep='\s+')
-    # sample_data = pd.read_csv(f"Output5/samples/planet_{index}_samples_nsteps_{nsteps}.dat", sep='\s+')
-    sample_data = pd.read_csv(f"Output6/samples/planet_{index}_samples_nsteps_{nsteps}.dat", sep='\s+')
+#     #get planet sample data
+#     # sample_data = pd.read_csv(f"Output4/samples/planet_{index}_samples.dat", sep='\s+')
+#     # sample_data = pd.read_csv(f"Output5/samples/planet_{index}_samples_nsteps_{nsteps}.dat", sep='\s+')
+#     sample_data = pd.read_csv(f"Output6/samples/planet_{index}_samples_nsteps_{nsteps}.dat", sep='\s+')
 
 
-    CMF = sample_data['CMF']
-    Mbulk = sample_data['Mbulk[M_J]']
-    Tint = sample_data['Tint[K]']
+#     CMF = sample_data['CMF']
+#     Mbulk = sample_data['Mbulk[M_J]']
+#     Tint = sample_data['Tint[K]']
 
-    R = sample_data['Rtot[R_J]']
-    M = sample_data['Mtot[M_J]']
-    age = sample_data['Age[Gyr]']
-    Zp = sample_data['Zp']
+#     R = sample_data['Rtot[R_J]']
+#     M = sample_data['Mtot[M_J]']
+#     age = sample_data['Age[Gyr]']
+#     Zp = sample_data['Zp']
 
-    #account for atmospheric mass
-    Matm = M - Mbulk
-    Menv_int = Mbulk * (1-CMF)
-    EMF = (Menv_int + Matm) / Mbulk #EMF: includes atmosphere and interior and NOT core
-    CMF_calc = 1 - EMF
-    Zcore = 1
-    # Zp_calc = Zcore*CMF_calc + Zenv*(1-CMF_calc) #= CMF_calc + Zenv*EMF
-    Zp_calc = Zcore*CMF + Zenv*(1-CMF)
+#     #account for atmospheric mass
+#     Matm = M - Mbulk
+#     Menv_int = Mbulk * (1-CMF)
+#     EMF = (Menv_int + Matm) / Mbulk #EMF: includes atmosphere and interior and NOT core
+#     CMF_calc = 1 - EMF
+#     Zcore = 1
+#     # Zp_calc = Zcore*CMF_calc + Zenv*(1-CMF_calc) #= CMF_calc + Zenv*EMF
+#     Zp_calc = Zcore*CMF + Zenv*(1-CMF)
 
-    #assign flat samples
-    flat_samples = np.zeros((len(CMF), 6))
-    flat_samples[:, 0] = CMF
-    flat_samples[:, 1] = M
-    flat_samples[:, 2] = R
-    flat_samples[:, 3] = Tint
-    flat_samples[:, 4] = age
-    flat_samples[:, 5] = Zp_calc
+#     #assign flat samples
+#     flat_samples = np.zeros((len(CMF), 6))
+#     flat_samples[:, 0] = CMF
+#     flat_samples[:, 1] = M
+#     flat_samples[:, 2] = R
+#     flat_samples[:, 3] = Tint
+#     flat_samples[:, 4] = age
+#     flat_samples[:, 5] = Zp_calc
 
-    # #plot corner plot
-    # figure = corner.corner(
-    #     flat_samples,
-    #     labels=[r"CMF", r"M [$M_{Jup}$]",\
-    #             r"R [$R_{Jup}$]", r"$T_{int}$ [K] ",\
-    #             r"Age [Gyr]", r"$Z_{planet}$"],
-    #             quantiles=[0.16, 0.5, 0.84],\
-    #             truths=[np.nan, mass_obs, rad_obs, np.nan, age_obs, np.nan],\
-    #             show_titles=True,
-    #             title_kwargs={"fontsize": 14},
-    #             label_kwargs={"fontsize": 16},
-    #             # hist_kwargs={"color": "C0", "alpha": 0.5, "density": False}
-    # )
-    # plt.tight_layout()
-    # plt.suptitle(f"'{index}) {name}'\ncorner plot | nsteps = {nsteps}", fontsize=16)
-    # # plt.subplots_adjust(top=0.9)
-    # plt.savefig(f"Output5/corner/planet_{index}_corner_nsteps_{nsteps}.pdf")
-    # plt.savefig(f"Output6/corner/planet_{index}_corner_nsteps_{nsteps}.pdf")
-    #             # bbox_inches='tight', format='pdf', dpi=1000)
-    # plt.show()
-# %%
+#     # #plot corner plot
+#     # figure = corner.corner(
+#     #     flat_samples,
+#     #     labels=[r"CMF", r"M [$M_{Jup}$]",\
+#     #             r"R [$R_{Jup}$]", r"$T_{int}$ [K] ",\
+#     #             r"Age [Gyr]", r"$Z_{planet}$"],
+#     #             quantiles=[0.16, 0.5, 0.84],\
+#     #             truths=[np.nan, mass_obs, rad_obs, np.nan, age_obs, np.nan],\
+#     #             show_titles=True,
+#     #             title_kwargs={"fontsize": 14},
+#     #             label_kwargs={"fontsize": 16},
+#     #             # hist_kwargs={"color": "C0", "alpha": 0.5, "density": False}
+#     # )
+#     # plt.tight_layout()
+#     # plt.suptitle(f"'{index}) {name}'\ncorner plot | nsteps = {nsteps}", fontsize=16)
+#     # # plt.subplots_adjust(top=0.9)
+#     # plt.savefig(f"Output5/corner/planet_{index}_corner_nsteps_{nsteps}.pdf")
+#     # plt.savefig(f"Output6/corner/planet_{index}_corner_nsteps_{nsteps}.pdf")
+#     #             # bbox_inches='tight', format='pdf', dpi=1000)
+#     # plt.show()
+# # %%
